@@ -3,11 +3,11 @@ import sys, random, string, math
 from random import randint
 import random
 
-
-
 ''' Online Banking System with Object Oriented Programming '''
 #storing structure for the accounts
 accounts_data = {'drizzyR': ['7675234','7234',230]}
+for i in accounts_data.keys():
+    print(i)
 
 #defining our class object
 class Bank:
@@ -150,10 +150,12 @@ class ActionMenu:
                 if account_pin == accounts_data[account_username][1]:
                     accounts_data.pop(account_username)
                     print('Your account was successfully close.')
+                    ActionMenu.anything_else()
                 else:
                     print('Wrong pin number')
-                    continue
-            break
+            else:
+                print('Account not found!')
+        return close_account()
 
     #SHOW CUSTOMER DETAILS
     def show_account(self):
@@ -193,7 +195,6 @@ def perform_action():
             if user_action.upper() == "O":
                 action.open_account()
                 action.anything_else() 
-                continue
             
             elif user_action.upper() == "L":
                 action.close_account()
@@ -216,5 +217,4 @@ def perform_action():
     print(f'Have a wonderful day, {name}')
 
 perform_action()
- 
         
